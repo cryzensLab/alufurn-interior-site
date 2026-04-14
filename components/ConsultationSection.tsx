@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { useQuote } from "./AppWrapper";
 /**
  * Consultation Component
  * 
@@ -9,6 +10,7 @@ import { ArrowRight } from "lucide-react";
  * architectural background overlays, and floating geometric accents.
  */
 export default function Consultation() {
+    const { openQuote } = useQuote();
     const words = ["kitchen", "wardrobe", "space", "interiors", "lifestyle"];
     const [index, setIndex] = useState(0);
     useEffect(() => {
@@ -87,6 +89,7 @@ export default function Consultation() {
                     </motion.p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-10">
                         <motion.button
+                            onClick={openQuote}
                             whileHover={{ scale: 1.05, backgroundColor: "#C5A059", color: "#1E473C" }}
                             whileTap={{ scale: 0.95 }}
                             className="bg-white text-brand-primary px-16 py-6 rounded-none text-[10px] font-bold uppercase tracking-[0.5em] transition-all duration-500 shadow-2xl"

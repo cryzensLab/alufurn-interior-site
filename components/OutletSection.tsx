@@ -11,11 +11,11 @@ import { MapPin } from "lucide-react";
  */
 export default function Outlets() {
     const outlets = [
-        { city: "Mumbai", address: "Design District, Lower Parel", type: "FLAGSHIP STUDIO" },
-        { city: "Delhi", address: "MG Road, Sultanpur", type: "EXPERIENCE CENTER" },
-        { city: "Bangalore", address: "Indiranagar, 100ft Road", type: "DESIGN STUDIO" },
-        { city: "Hyderabad", address: "Jubilee Hills, Road No. 36", type: "EXPERIENCE CENTER" },
-        { city: "Pune", address: "Koregaon Park", type: "BOUTIQUE STUDIO" }
+        { city: "PATNA", address: "G-15, Shashi Complex Exhibition Road Patna - 800001 Bihar, India", type: "FLAGSHIP STUDIO" },
+        { city: "JAIPUR", address: "131-132, Motilal Omparkash Opp. Jhotwara Police Station Near Amazon Office, Main Niwaru Road Jhotwara Industrial Area Jaipur - 302012 Rajasthan, India", type: "EXPERIENCE CENTER" },
+        { city: "CALICUT", address: "Behind Industrial EstateGround Floor 42/1680, Kunnummal Nallalam, P.O Calicut", type: "DESIGN STUDIO" },
+        { city: "Opeing soon", address: "", type: "EXPERIENCE CENTER" },
+        { city: "Opeinig soon", address: "", type: "BOUTIQUE STUDIO" }
     ];
 
     return (
@@ -78,7 +78,7 @@ export default function Outlets() {
                                 <h3 className="text-3xl font-semibold text-brand-primary group-hover:text-white mb-2 transition-colors">
                                     {outlet.city}
                                 </h3>
-                                <p className="text-brand-primary/40 group-hover:text-white/60 text-sm font-light transition-colors">
+                                <p className="text-brand-primary/40 group-hover:text-white/60 text-sm font-regular transition-colors">
                                     {outlet.address}
                                 </p>
                             </div>

@@ -22,7 +22,7 @@ const ShowcaseItem = ({
     return (
         <div className={`flex flex-col ${reverse ? "md:flex-row-reverse" : "md:flex-row"} items-center mb-24 last:mb-0 relative`}>
             {/* Image Container */}
-            <div className="w-full md:w-[75%] h-[400px] md:h-[600px] overflow-hidden shadow-2xl">
+            <div className="w-full md:w-[75%] aspect-[16/9] overflow-hidden shadow-2xl">
                 <motion.img
                     initial={{ scale: 1.1 }}
                     whileInView={{ scale: 1 }}
@@ -143,7 +143,7 @@ export default function ProductShowcase() {
                                 transition={{ duration: 0.8, delay: index * 0.2 }}
                                 className="group cursor-pointer"
                             >
-                                <div className="relative aspect-[4/5] overflow-hidden mb-8 bg-brand-light">
+                                <div className="relative aspect-[3/2] overflow-hidden mb-8 bg-brand-light">
                                     <motion.img
                                         whileHover={{ scale: 1.05 }}
                                         whileInView={{ scale: [1, 1.05, 1] }}

@@ -1,16 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useQuote } from "./AppWrapper";
 
 /**
  * HeroSection Component
  * 
  * Reusable Next.js (App Router) component featuring a video background,
  * cinematic typography with a "Made in India" gradient, and framer-motion animations.
- * 
- * @param onOpenQuote - Callback function to trigger the consultation/quote modal or scroll.
  */
-export default function HeroSection({ onOpenQuote }: { onOpenQuote?: () => void }) {
+export default function HeroSection() {
+    const { openQuote } = useQuote();
     return (
         <section className="relative h-screen w-full overflow-hidden flex items-end pb-16 md:pb-24">
             {/* Video Background */}
@@ -46,7 +46,7 @@ export default function HeroSection({ onOpenQuote }: { onOpenQuote?: () => void 
                     </p>
 
                     <motion.button
-                        onClick={() => onOpenQuote?.()}
+                        onClick={openQuote}
                         whileHover={{
                             backgroundColor: "#ffffff",
                             color: "#1a1a1a",
@@ -54,7 +54,7 @@ export default function HeroSection({ onOpenQuote }: { onOpenQuote?: () => void 
                         }}
                         whileInView={{ scale: [1, 1.05, 1] }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.3, delay: 1 }}
+                        transition={{ duration: 0.1, delay: 0 }}
                         className="px-8 py-3 md:px-10 md:py-4 border-2 border-white text-white rounded-none tracking-widest text-xs md:text-base font-bold uppercase transition-colors"
                     >
                         Get a Quote

@@ -110,7 +110,7 @@ export default function ExperienceCenter() {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         whileInView={{ scale: [1, 1.05, 1] }}
-                        viewport={{ once: true, delay: 0.5 }}
+                        viewport={{ once: true }}
                         className="inline-block bg-brand-gold text-white px-16 py-6 text-[10px] font-bold uppercase tracking-[0.5em] md:hover:bg-white md:hover:text-brand-primary transition-all duration-500 shadow-2xl"
                     >
                         Book a Visit
@@ -158,7 +158,7 @@ export default function ExperienceCenter() {
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true }}
-                                className="relative aspect-[4/5] overflow-hidden shadow-2xl"
+                                className="relative aspect-[3/2] overflow-hidden shadow-2xl"
                             >
                                 <img
                                     src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?q=80&w=1600&auto=format&fit=crop"
@@ -191,7 +191,7 @@ export default function ExperienceCenter() {
                                     <div key={index} className="flex gap-6 group">
                                         <motion.div
                                             whileInView={{ width: [48, 80, 48] }}
-                                            viewport={{ once: true, delay: index * 0.2 }}
+                                            viewport={{ once: true }}
                                             className="w-12 h-px bg-brand-gold mt-4 shrink-0 md:group-hover:w-20 transition-all duration-500"
                                         />
                                         <div>
@@ -226,7 +226,7 @@ export default function ExperienceCenter() {
                             >
                                 <motion.div
                                     whileInView={{ scale: [1, 1.1, 1] }}
-                                    viewport={{ once: true, delay: index * 0.2 }}
+                                    viewport={{ once: true }}
                                     className="text-brand-gold mb-8 md:group-hover:scale-110 transition-transform duration-500"
                                 >
                                     {item.icon}
@@ -263,8 +263,8 @@ export default function ExperienceCenter() {
                                 key={index}
                                 whileHover={{ scale: 1.05 }}
                                 whileInView={{ scale: [1, 1.05, 1] }}
-                                viewport={{ once: true, delay: index * 0.05 }}
-                                className="aspect-[3/4] overflow-hidden cursor-pointer"
+                                viewport={{ once: true }}
+                                className="aspect-[3/2] overflow-hidden cursor-pointer"
                             >
                                 <img
                                     src={img}

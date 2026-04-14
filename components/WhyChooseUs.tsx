@@ -30,7 +30,7 @@ export default function WhyChooseUs() {
                             className="text-5xl md:text-7xl font-bold mb-8 tracking-tighter leading-none"
                         >
                             Precision <br />
-                            <span className="text-brand-gold italic font-light">by Robotics.</span>
+                            <span className="text-brand-gold italic font-light">by Technology.</span>
                         </motion.h2>
 
                         <motion.p
@@ -40,7 +40,7 @@ export default function WhyChooseUs() {
                             transition={{ delay: 0.2 }}
                             className="text-white/60 text-xl font-light leading-relaxed mb-12 max-w-lg"
                         >
-                            World-class German HOMAG machinery meets AI-driven automation.
+                            Engineered in India, our manufacturing blends advanced automation with refined craftsmanship.
                             We deliver 0.1mm accuracy that manual craft cannot reach.
                         </motion.p>
                         <div className="flex flex-wrap gap-12">
@@ -54,7 +54,7 @@ export default function WhyChooseUs() {
                             </div>
                             <div className="flex flex-col">
                                 <span className="text-4xl font-bold text-white mb-1 tracking-tight">E1</span>
-                                <span className="text-brand-gold text-[10px] uppercase tracking-widest font-bold">Eco-Grade</span>
+                                <span className="text-brand-gold text-[10px] uppercase tracking-widest font-bold">Eco-Safe Standards</span>
                             </div>
                         </div>
                     </div>
@@ -79,7 +79,7 @@ export default function WhyChooseUs() {
                             {/* Floating Badge */}
                             <div className="absolute -bottom-6 -right-6 bg-brand-gold p-8 hidden md:block">
                                 <p className="text-white font-bold text-xs tracking-widest uppercase leading-tight text-center">
-                                    German <br /> Engineering
+                                    Modern <br /> Equipment
                                 </p>
                             </div>
                         </motion.div>

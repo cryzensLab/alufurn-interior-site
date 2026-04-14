@@ -12,19 +12,19 @@ import { MapPin, Phone, Menu, X, ArrowRight } from "lucide-react";
    ────────────────────────────────────────────── */
 const locations = [
     {
-        city: "Gurugram",
-        address: "123 Industrial Estate, Phase II",
-        phone: "+91 123 456 7890",
+        city: "Patna",
+        address: "G-15, Shashi Complex Exhibition Road",
+        phone: "+91 776 397 0474",
     },
     {
-        city: "New Delhi",
-        address: "45 Design District, South Ext",
-        phone: "+91 987 654 3210",
+        city: "JAIPUR",
+        address: "131-132, Motilal Omparkash Opp. Jhotwara Police Station Near Amazon Office, Main Niwaru Road Jhotwara Industrial Area",
+        phone: "+91 9776 397 0474",
     },
     {
-        city: "Mumbai",
-        address: "Studio 12, Worli Sea Face",
-        phone: "+91 555 012 3456",
+        city: "Calicut",
+        address: "Behind Industrial EstateGround Floor 42/1680, Kunnummal Nallalam, P.O Calicut",
+        phone: "+91 9776 397 0474",
     },
 ];
 
@@ -117,7 +117,7 @@ export default function Navbar({ onOpenQuote }: { onOpenQuote?: () => void }) {
         >
             {/* ── Top Bar ── */}
             <div
-                className={`w-full px-6 md:px-12 flex items-center justify-between transition-all duration-500 ${mobileMenuOpen
+                className={`container mx-auto px-6 md:px-12 flex items-center justify-between transition-all duration-500 ${mobileMenuOpen
                     ? "py-6 md:py-8 border-b border-gray-100 bg-white relative z-[110]"
                     : ""
                     }`}
@@ -245,17 +245,6 @@ export default function Navbar({ onOpenQuote }: { onOpenQuote?: () => void }) {
                             )}
                         </div>
                     ))}
-
-                    {/* Enquire Button */}
-                    <button
-                        onClick={onOpenQuote}
-                        className={`px-6 py-2 rounded-none text-[10px] font-bold uppercase tracking-widest transition-all duration-500 ${isWhiteNavbar
-                            ? "bg-brand-primary text-white md:hover:bg-brand-gold"
-                            : "bg-white text-brand-primary md:hover:bg-brand-gold md:hover:text-white"
-                            }`}
-                    >
-                        Enquire Now
-                    </button>
 
                     {/* Location Icon + Dropdown */}
                     <div

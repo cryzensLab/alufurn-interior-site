@@ -57,9 +57,9 @@ const supportLinks = [
 ];
 
 const socialLinks = [
-    { icon: InstagramIcon, href: "#", label: "Instagram" },
-    { icon: FacebookIcon, href: "#", label: "Facebook" },
-    { icon: LinkedinIcon, href: "#", label: "LinkedIn" },
+    { icon: InstagramIcon, href: "https://www.instagram.com/alufurn", label: "Instagram" },
+    { icon: FacebookIcon, href: "https://www.facebook.com/people/Alufurn/61583290337095/", label: "Facebook" },
+    { icon: LinkedinIcon, href: "https://www.linkedin.com/in/alufurn-home-44099b391?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", label: "LinkedIn" },
 ];
 
 /* ──────────────────────────────────────────────
@@ -77,14 +77,14 @@ export default function Footer() {
                             className="flex items-center gap-2 text-white/60 hover:text-white transition-colors"
                         >
                             <Mail size={18} />
-                            <span className="text-sm">hello@alufurn.com</span>
+                            <span className="text-sm">enquiries@alufurn.com</span>
                         </a>
                         <a
                             href="tel:+911234567890"
                             className="flex items-center gap-2 text-white/60 hover:text-white transition-colors"
                         >
                             <Phone size={18} />
-                            <span className="text-sm">+91 123 456 7890</span>
+                            <span className="text-sm">+91 776 397 0474</span>
                         </a>
                     </div>
 
@@ -95,6 +95,8 @@ export default function Footer() {
                                 <a
                                     key={social.label}
                                     href={social.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     aria-label={social.label}
                                     className="p-2 rounded-none border border-white/10 hover:bg-white hover:text-brand-primary transition-all"
                                 >
@@ -130,9 +132,9 @@ export default function Footer() {
                         <div className="flex items-start gap-3 text-white/60">
                             <MapPin size={20} className="shrink-0 mt-1" />
                             <span className="text-sm font-light">
-                                123 Industrial Estate, Phase II
+                                G-15, Shashi Complex Exhibition Road
                                 <br />
-                                Gurugram, Haryana, India - 122001
+                                Patna, Bihar, India - 800001
                             </span>
                         </div>
                     </div>

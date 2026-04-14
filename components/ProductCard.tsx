@@ -25,7 +25,7 @@ export default function ProductCard({
             className="group cursor-pointer"
         >
             {/* Image Container */}
-            <div className="relative aspect-[4/5] overflow-hidden mb-5 bg-brand-light">
+            <div className="relative aspect-[3/2] overflow-hidden mb-5 bg-brand-light">
                 <Image
                     src={image}
                     alt={title}

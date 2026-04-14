@@ -136,7 +136,7 @@ export default function FranchiseSection() {
                             >
                                 <motion.div
                                     whileInView={{ scale: [1, 1.1, 1] }}
-                                    viewport={{ once: true, delay: index * 0.2 }}
+                                    viewport={{ once: true }}
                                     className="text-brand-gold mb-8 md:group-hover:scale-110 transition-transform duration-500"
                                 >
                                     {item.icon}
@@ -185,7 +185,7 @@ export default function FranchiseSection() {
                                     <div key={index} className="flex gap-6 group">
                                         <motion.div
                                             whileInView={{ scale: [1, 1.2, 1] }}
-                                            viewport={{ once: true, delay: index * 0.2 }}
+                                            viewport={{ once: true }}
                                             className="text-brand-gold shrink-0 md:group-hover:scale-110 transition-transform"
                                         >
                                             {item.icon}
@@ -221,8 +221,8 @@ export default function FranchiseSection() {
                                 key={index}
                                 whileHover={{ y: -10 }}
                                 whileInView={{ y: [0, -10, 0] }}
-                                viewport={{ once: true, delay: index * 0.1 }}
-                                className="relative aspect-[4/5] overflow-hidden group cursor-pointer"
+                                viewport={{ once: true }}
+                                className="relative aspect-[3/2] overflow-hidden group cursor-pointer"
                             >
                                 <img
                                     src={item.img}
@@ -234,7 +234,7 @@ export default function FranchiseSection() {
                                     <h4 className="text-white font-bold text-xl uppercase tracking-widest">{item.name}</h4>
                                     <motion.div
                                         whileInView={{ width: ["0%", "100%", "0%"] }}
-                                        viewport={{ once: true, delay: index * 0.3 }}
+                                        viewport={{ once: true }}
                                         className="w-0 md:group-hover:w-full h-px bg-brand-gold transition-all duration-500 mt-2"
                                     />
                                 </div>
@@ -294,7 +294,7 @@ export default function FranchiseSection() {
                                 <motion.div
                                     key={index}
                                     whileInView={{ borderColor: ["#f3f4f6", "#c5a059", "#f3f4f6"] }}
-                                    viewport={{ once: true, delay: index * 0.2 }}
+                                    viewport={{ once: true }}
                                     className="flex items-center gap-6 p-8 border border-gray-100 md:hover:border-brand-gold transition-colors"
                                 >
                                     <CheckCircle2 className="text-brand-gold shrink-0" />

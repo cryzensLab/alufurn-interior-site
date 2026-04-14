@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
+import AppWrapper from "@/components/AppWrapper";
 
 /* ── Fonts ── */
 const inter = Inter({
@@ -36,11 +37,10 @@ export default function RootLayout({
             lang="en"
             className={`${inter.variable} ${playfair.variable} antialiased`}
         >
-            <body className="min-h-screen flex flex-col">
-                <Navbar />
-                <main className="flex-1">{children}</main>
-                <Footer />
-                <FloatingActions />
+            <body className="min-h-screen">
+                <AppWrapper>
+                    {children}
+                </AppWrapper>
             </body>
         </html>
     );

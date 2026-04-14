@@ -8,10 +8,10 @@ import { motion } from "framer-motion";
  */
 export default function AboutUs() {
     const stats = [
-        { value: "9M+", label: "CABINETS ANNUALLY" },
-        { value: "5", label: "GLOBAL PRODUCTION BASES" },
-        { value: "146", label: "COUNTRIES SERVED" },
-        { value: "500K+", label: "SQ. FT. SMART FACILITY" }
+        { value: "10K+", label: "Components Produced Annually" },
+        { value: "2", label: "Advanced Production Facility" },
+        { value: "25+", label: "Projects Delivered" },
+        { value: "20K", label: "SQ. FT. Manufacturing Facility" }
     ];
     return (
         <section className="py-32 bg-white text-center overflow-hidden relative">
@@ -26,7 +26,7 @@ export default function AboutUs() {
                     viewport={{ once: true }}
                     className="text-brand-primary text-[10px] uppercase tracking-[0.5em] mb-4 block font-bold"
                 >
-                    INDUSTRIAL SCALE
+                    INDIA-DRIVEN
                 </motion.span>
 
                 <motion.h2
@@ -35,7 +35,7 @@ export default function AboutUs() {
                     viewport={{ once: true }}
                     className="text-4xl md:text-6xl font-bold text-brand-gold mb-12 tracking-[0.1em] uppercase"
                 >
-                    GLOBAL LEADERSHIP
+                    GLOBALLY INSPIRED
                 </motion.h2>
                 <div className="max-w-5xl mx-auto space-y-10 mb-24">
                     <motion.p
@@ -45,7 +45,7 @@ export default function AboutUs() {
                         transition={{ delay: 0.2 }}
                         className="text-brand-primary text-xl md:text-2xl leading-relaxed font-medium"
                     >
-                        Alufurn is powered by the world's largest cabinetry manufacturing infrastructure.
+                        Alufurn is built on a next-generation manufacturing ecosystem designed for scale, precision, and consistency.
                     </motion.p>
 
                     <motion.p
@@ -53,13 +53,15 @@ export default function AboutUs() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.4 }}
-                        className="text-brand-primary/60 text-base md:text-lg leading-relaxed font-light"
+                        className="text-brand-primary/60 text-base md:text-lg leading-relaxed font-regular"
                     >
-                        With an annual output exceeding 9 million cabinets and five advanced production bases,
-                        we leverage heavy-duty German engineering and AI-integrated logistics to deliver
-                        premium interiors at an unprecedented scale. Our commitment to high-capacity
-                        precision ensures that every project, from luxury villas to massive developments,
-                        receives the same uncompromising quality.
+                        Powered by advanced German machinery and fully integrated
+                        production systems, we bring industrial efficiency to modern
+                        interior solutions — delivering premium quality across every
+                        project, from individual homes to large-scale developments.
+
+                        With high-capacity production, intelligent automation, and strict quality control,
+                        we ensure every unit meets the same refined standard — no matter the volume.
                     </motion.p>
                 </div>
                 {/* Stats Grid */}
