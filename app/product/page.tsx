@@ -6,6 +6,7 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import CategoryNav, { type Category } from "@/components/CategoryNav";
 import ProductCard from "@/components/ProductCard";
+import QuoteModal from "@/components/QuoteModal";
 
 /* ──────────────────────────────────────────────
    Category & Product Data
@@ -43,32 +44,32 @@ const sections: CategorySection[] = [
             {
                 title: "Linear Series",
                 subtitle: "Minimalist Handleless",
-                image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=800&auto=format&fit=crop",
+                image: "/images/linear-series.jpg",
             },
             {
                 title: "Island Pro",
                 subtitle: "Open Plan Kitchen",
-                image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop",
+                image: "/images/island-pro.png",
             },
             {
                 title: "Classic Matte",
                 subtitle: "Traditional Elegance",
-                image: "https://images.unsplash.com/photo-1556909172-54557c7e4fb7?q=80&w=800&auto=format&fit=crop",
+                image: "/images/classic-matte.png",
             },
             {
                 title: "Modular Max",
                 subtitle: "Compact Solutions",
-                image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800&auto=format&fit=crop",
+                image: "/images/modular_max.png",
             },
             {
                 title: "Luxury Bespoke",
                 subtitle: "Custom Built",
-                image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=800&auto=format&fit=crop",
+                image: "/images/luxury_bespoke.png",
             },
             {
                 title: "Urban Loft",
                 subtitle: "Industrial Chic",
-                image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=800&auto=format&fit=crop",
+                image: "/images/urban-loft.png",
             },
         ],
     },
@@ -82,32 +83,32 @@ const sections: CategorySection[] = [
             {
                 title: "Walk-In Elite",
                 subtitle: "Full Room System",
-                image: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?q=80&w=800&auto=format&fit=crop",
+                image: "/images/walk-in-elite.png",
             },
             {
                 title: "Sliding Luxe",
                 subtitle: "Space Saving Design",
-                image: "https://images.unsplash.com/photo-1558997519-83ea9252edf8?q=80&w=800&auto=format&fit=crop",
+                image: "/images/sliding-luxe.jpg",
             },
             {
                 title: "Fitted Pro",
                 subtitle: "Wall-to-Wall",
-                image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=800&auto=format&fit=crop",
+                image: "/images/fitted-pro.png",
             },
             {
                 title: "Hinged Classic",
                 subtitle: "Traditional Doors",
-                image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=800&auto=format&fit=crop",
+                image: "/images/hinged-classic.png",
             },
             {
                 title: "Modular Cube",
                 subtitle: "Customizable Units",
-                image: "https://images.unsplash.com/photo-1617806118233-18e1de247200?q=80&w=800&auto=format&fit=crop",
+                image: "/images/modular-cube.png",
             },
             {
                 title: "Dresser Suite",
                 subtitle: "Integrated Vanity",
-                image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop",
+                image: "/images/dresser-suite.png",
             },
         ],
     },
@@ -121,32 +122,32 @@ const sections: CategorySection[] = [
             {
                 title: "Floating Vanity",
                 subtitle: "Wall Mounted",
-                image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=800&auto=format&fit=crop",
+                image: "/images/floating-vanity.png",
             },
             {
                 title: "Double Basin",
                 subtitle: "His & Hers",
-                image: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=800&auto=format&fit=crop",
+                image: "/images/double-basin.png",
             },
             {
                 title: "Compact Unit",
                 subtitle: "Powder Room",
-                image: "https://images.unsplash.com/photo-1600607687644-c7171b42498f?q=80&w=800&auto=format&fit=crop",
+                image: "/images/compact-unit.png",
             },
             {
                 title: "Mirror Cabinet",
                 subtitle: "Storage & Light",
-                image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=800&auto=format&fit=crop",
+                image: "/images/mirror-cabinet.png",
             },
             {
                 title: "Luxury Console",
                 subtitle: "Freestanding",
-                image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=800&auto=format&fit=crop",
+                image: "/images/luxury-console.png",
             },
             {
                 title: "Corner Unit",
                 subtitle: "Space Optimizer",
-                image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=800&auto=format&fit=crop",
+                image: "/images/corner-unit.png",
             },
         ],
     },
@@ -160,32 +161,32 @@ const sections: CategorySection[] = [
             {
                 title: "Pivot Grand",
                 subtitle: "Statement Entry",
-                image: "https://images.unsplash.com/photo-1515898913320-f38370edab7a?q=80&w=800&auto=format&fit=crop",
+                image: "/images/pivot-grand.png",
             },
             {
                 title: "Barn Slider",
                 subtitle: "Rustic Modern",
-                image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800&auto=format&fit=crop",
+                image: "/images/barn-slider.png",
             },
             {
                 title: "Flush Panel",
                 subtitle: "Seamless Design",
-                image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop",
+                image: "/images/flush-panel.png",
             },
             {
                 title: "Glass Divide",
                 subtitle: "Transparent Living",
-                image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=800&auto=format&fit=crop",
+                image: "/images/glass-divide.png",
             },
             {
                 title: "Hidden Door",
                 subtitle: "Secret Passage",
-                image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=800&auto=format&fit=crop",
+                image: "/images/hidden-door.png",
             },
             {
                 title: "French Style",
                 subtitle: "Classic Pair",
-                image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=800&auto=format&fit=crop",
+                image: "/images/french-style.png",
             },
         ],
     },
@@ -199,33 +200,19 @@ const sections: CategorySection[] = [
             {
                 title: "Facade System",
                 subtitle: "Exterior Cladding",
-                image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=800&auto=format&fit=crop",
+                image: "/images/facade-system.png",
             },
             {
                 title: "Feature Wall",
                 subtitle: "Interior Accent",
-                image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop",
+                image: "/images/feature-wall.png",
             },
             {
-                title: "Ceiling Panel",
+                title: "Wall Panel",
                 subtitle: "Suspended System",
-                image: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=800&auto=format&fit=crop",
+                image: "/images/wall-panel.png",
             },
-            {
-                title: "Partition Screen",
-                subtitle: "Room Divider",
-                image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=800&auto=format&fit=crop",
-            },
-            {
-                title: "Perforated Art",
-                subtitle: "Decorative Panel",
-                image: "https://images.unsplash.com/photo-1600607687644-c7171b42498f?q=80&w=800&auto=format&fit=crop",
-            },
-            {
-                title: "Composite Core",
-                subtitle: "High Performance",
-                image: "https://images.unsplash.com/photo-1558997519-83ea9252edf8?q=80&w=800&auto=format&fit=crop",
-            },
+
         ],
     },
 ];
@@ -249,6 +236,7 @@ const heroImages: Record<string, string> = {
    ────────────────────────────────────────────── */
 export default function ProductsPage() {
     const [activeCategory, setActiveCategory] = useState(categories[0].id);
+    const [isQuoteOpen, setIsQuoteOpen] = useState(false);
     const sectionRefs = useRef<Map<string, HTMLElement>>(new Map());
     const isScrolling = useRef(false);
 
@@ -313,6 +301,14 @@ export default function ProductsPage() {
             isScrolling.current = false;
         }, 1000);
     }, []);
+
+    const openWhatsApp = () => {
+        window.open(
+            "https://wa.me/916297290910?text=Hi%20I%27m%20interested%20in%20ALUFURN%20custom%20solutions.%20Please%20share%20details.",
+            "_blank",
+            "noopener,noreferrer"
+        );
+    };
 
     /* ── Active hero image ── */
     const activeHeroImage = heroImages[activeCategory] || heroImages.kitchen;
@@ -400,6 +396,7 @@ export default function ProductsPage() {
                         initial={{ opacity: 0, y: 12 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 1 }}
+                        onClick={() => setIsQuoteOpen(true)}
                         className="group/cta relative inline-flex items-center gap-3 overflow-hidden
                             border-2 border-white/30 text-white
                             px-10 md:px-14 py-4 md:py-5
@@ -453,9 +450,8 @@ export default function ProductsPage() {
                 <section
                     key={section.id}
                     id={section.id}
-                    className={`py-20 md:py-32 ${
-                        sectionIndex % 2 === 0 ? "bg-white" : "bg-brand-surface"
-                    }`}
+                    className={`py-20 md:py-32 ${sectionIndex % 2 === 0 ? "bg-white" : "bg-brand-surface"
+                        }`}
                 >
                     <div className="container mx-auto px-6 md:px-12">
                         {/* Section Header */}
@@ -511,10 +507,13 @@ export default function ProductsPage() {
                             transition={{ delay: 0.3 }}
                             className="mt-16 md:mt-20 flex justify-center"
                         >
-                            <button className="group/btn relative inline-flex items-center gap-3 overflow-hidden border border-brand-primary/20 text-brand-primary px-10 md:px-14 py-4 md:py-5 text-[10px] md:text-[11px] font-semibold uppercase tracking-[0.3em] transition-all duration-500 hover:border-brand-primary hover:tracking-[0.45em]">
+                            <button
+                                onClick={() => setIsQuoteOpen(true)}
+                                className="group/btn relative inline-flex items-center gap-3 overflow-hidden border border-brand-primary/20 text-brand-primary px-10 md:px-14 py-4 md:py-5 text-[10px] md:text-[11px] font-semibold uppercase tracking-[0.3em] transition-all duration-500 hover:border-brand-primary hover:tracking-[0.45em]"
+                            >
                                 <span className="absolute inset-0 bg-brand-primary scale-x-0 origin-left group-hover/btn:scale-x-100 transition-transform duration-500 ease-out" />
                                 <span className="relative z-10 group-hover/btn:text-white transition-colors duration-500">
-                                    Explore All {section.heading}
+                                    Get Quote for {section.heading}
                                 </span>
                                 <ArrowRight
                                     size={14}
@@ -587,6 +586,7 @@ export default function ProductsPage() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.3 }}
+                        onClick={openWhatsApp}
                         className="group/cta relative inline-flex items-center gap-3 overflow-hidden
                             border border-brand-gold/40 text-white
                             px-10 md:px-14 py-4 md:py-5
@@ -603,6 +603,12 @@ export default function ProductsPage() {
                     </motion.button>
                 </div>
             </section>
+
+            {/* Quote Modal */}
+            <QuoteModal
+                isOpen={isQuoteOpen}
+                onClose={() => setIsQuoteOpen(false)}
+            />
         </div>
     );
 }

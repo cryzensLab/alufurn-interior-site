@@ -44,7 +44,6 @@ const companyLinks = [
     { label: "About Us", href: "#" },
     { label: "Our Process", href: "#" },
     { label: "Experience Center", href: "/experience" },
-    { label: "Franchise", href: "/franchise" },
     { label: "Careers", href: "#" },
 ];
 
@@ -104,12 +103,6 @@ export default function Footer() {
                                 </a>
                             );
                         })}
-                        <Link
-                            href="/contact"
-                            className="ml-4 px-6 py-2 bg-brand-gold text-white rounded-none text-sm font-medium hover:bg-white hover:text-brand-primary transition-all"
-                        >
-                            Get Started
-                        </Link>
                     </div>
                 </div>
 

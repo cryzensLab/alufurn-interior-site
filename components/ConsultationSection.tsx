@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 import { useQuote } from "./AppWrapper";
 /**
  * Consultation Component
@@ -96,10 +97,10 @@ export default function Consultation() {
                         >
                             Book Now
                         </motion.button>
-                        <button className="group flex items-center gap-4 text-white font-bold text-[10px] uppercase tracking-[0.4em] py-6 px-10 border border-white/10 hover:border-brand-gold transition-all">
+                        <Link href="/experience" className="group flex items-center gap-4 text-white font-bold text-[10px] uppercase tracking-[0.4em] py-6 px-10 border border-white/10 hover:border-brand-gold transition-all">
                             The Experience
                             <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform text-brand-gold" />
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>

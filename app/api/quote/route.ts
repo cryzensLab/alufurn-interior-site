@@ -10,32 +10,39 @@ import { NextResponse, NextRequest } from "next/server";
 type TelegramData = {
     name: string;
     phone: string;
-    email: string;
-    projectType: string;
-    product: string;
+    email?: string;
+    projectType?: string;
+    product?: string;
     location: string;
     message?: string;
     budget?: string;
     timeline?: string;
+    scheduleDate?: string;
+    quantity?: string;
 };
 
 // Telegram Function
 const sendTelegramMessage = async (data: TelegramData) => {
     try {
+        const isExperienceVisit = !data.email || data.projectType === "Experience Center Visit";
+        const title = isExperienceVisit ? "📍 *Experience Center Booking*" : "🔥 *New Premium Inquiry* 🔥";
+        
         const text = `
-🔥 *New Premium Inquiry* 🔥
+${title}
 
 👤 *Contact Details:*
 - Name: ${data.name}
 - Phone: ${data.phone}
-- Email: ${data.email}
+${data.email ? `- Email: ${data.email}` : ""}
 
 🏗️ *Project Info:*
-- Type: ${data.projectType}
-- Products: ${data.product}
+- Type: ${data.projectType || "Visit"}
+${data.product ? `- Products: ${data.product}` : ""}
 - Location: ${data.location}
-- Budget: ${data.budget || "Not specified"}
-- Timeline: ${data.timeline || "Not specified"}
+${data.scheduleDate ? `- *Scheduled Date:* ${data.scheduleDate}` : ""}
+${data.budget ? `- Budget: ${data.budget}` : ""}
+${data.timeline ? `- Timeline: ${data.timeline}` : ""}
+${data.quantity ? `- Quantity: ${data.quantity}` : ""}
 
 📝 *User Message:*
 ${data.message || "No additional message."}
@@ -73,8 +80,11 @@ export async function POST(req: Request) {
             product,
             budget,
             location,
+            city,
             timeline,
             message,
+            scheduleDate,
+            quantity,
             honeypot, // Hidden field for bot detection
             startTime // Timestamp to detect fast submissions
         } = body;
@@ -84,21 +94,30 @@ export async function POST(req: Request) {
             return NextResponse.json({ error: "Spam detected." }, { status: 400 });
         }
 
-        // 2. Submission speed check (reject if under 3 seconds)
+        // 2. Submission speed check (reject if under 2 seconds for simplicity)
         const currentTime = Date.now();
-        if (currentTime - startTime < 3000) {
+        if (startTime && currentTime - startTime < 2000) {
             return NextResponse.json({ error: "Too fast. Are you a bot?" }, { status: 400 });
         }
 
         // 3. Validation
-        if (!name || !phone || !email || !projectType || !location) {
-            return NextResponse.json({ error: "Missing required fields." }, { status: 400 });
+        if (!name || !phone) {
+            return NextResponse.json({ error: "Name and Phone are required." }, { status: 400 });
         }
 
-        // 4. Basic email format check
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            return NextResponse.json({ error: "Invalid email format." }, { status: 400 });
+        const isExperienceVisit = !email && city;
+        const finalLocation = location || city;
+
+        if (!isExperienceVisit && (!email || !projectType || !finalLocation)) {
+            return NextResponse.json({ error: "Missing required fields for inquiry." }, { status: 400 });
+        }
+
+        // 4. Basic email format check (if provided)
+        if (email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                return NextResponse.json({ error: "Invalid email format." }, { status: 400 });
+            }
         }
 
         // 5. Indian phone validation (basic)
@@ -110,7 +129,11 @@ export async function POST(req: Request) {
         // 6. Save to Google Sheets
         try {
             const { addToSheet } = await import("@/lib/googleSheets");
-            await addToSheet(body);
+            await addToSheet({ 
+                ...body, 
+                location: finalLocation,
+                scheduleDate: scheduleDate || body.date // Handle 'date' from Experience page
+            });
         } catch (sheetError) {
             console.error("Failed to save to Google Sheets:", sheetError);
         }
@@ -120,25 +143,23 @@ export async function POST(req: Request) {
             name,
             phone,
             email,
-            projectType,
-            product: Array.isArray(product) ? product.join(", ") : String(product),
-            location,
+            projectType: projectType || (isExperienceVisit ? "Experience Center Visit" : "General Inquiry"),
+            product: Array.isArray(product) ? product.join(", ") : (product || (isExperienceVisit ? "Showroom Walkthrough" : "")),
+            location: finalLocation || "Not specified",
             message,
             budget,
-            timeline
+            timeline,
+            scheduleDate: scheduleDate || body.date,
+            quantity
         });
 
         // Simulation: Save to database or send email
-        console.log("New Quote Request Received:", {
+        console.log("Inquiry Request Received:", {
             name,
             phone,
             email,
-            projectType,
-            product,
-            budget,
-            location,
-            timeline,
-            message,
+            location: finalLocation,
+            scheduleDate: scheduleDate || body.date,
             userAgent: req.headers.get("user-agent")
         });
 

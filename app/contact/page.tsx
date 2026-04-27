@@ -1,4 +1,6 @@
 "use client";
+export const dynamic = "force-dynamic";
+
 import React, { useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import {
@@ -48,23 +50,23 @@ const contactInfo = [
     {
         icon: Phone,
         label: "Call Us",
-        primary: "+91 123 456 7890",
-        secondary: "+91 098 765 4321",
-        href: "tel:+911234567890",
+        primary: "+91 776 397 0474",
+        secondary: "+91 776 397 0474",
+        href: "tel:+91 7763970474",
     },
     {
         icon: Mail,
         label: "Email Us",
-        primary: "hello@alufurn.com",
+        primary: "enquiries@alufurn.com",
         secondary: "support@alufurn.com",
-        href: "mailto:hello@alufurn.com",
+        href: "mailto:enquiries@alufurn.com",
     },
     {
         icon: MapPin,
         label: "Our Studio",
-        primary: "123 Industrial Estate, Phase II",
-        secondary: "Gurugram, Haryana, India — 122001",
-        href: "https://maps.google.com/?q=Gurugram+Haryana+India",
+        primary: "G-15, Shashi Complex Exhibition Road",
+        secondary: "Patna, Bihar, India - 800001",
+        href: "https://maps.app.goo.gl/9CuuLSiMVcXLk3rY6",
     },
     {
         icon: Clock,
@@ -153,6 +155,7 @@ const ContactPage = () => {
     const [submitted, setSubmitted] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [messageFocused, setMessageFocused] = useState(false);
+    const [startTime] = useState(Date.now());
 
     const formRef = useRef<HTMLDivElement>(null);
     const infoRef = useRef<HTMLDivElement>(null);
@@ -163,23 +166,44 @@ const ContactPage = () => {
         e.preventDefault();
         setIsSubmitting(true);
 
-        // Simulate async submission
-        await new Promise((resolve) => setTimeout(resolve, 1800));
+        try {
+            const response = await fetch("/api/quote", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    name: formData.fullName,
+                    phone: formData.phone,
+                    email: formData.email,
+                    projectType: formData.projectType,
+                    message: formData.message,
+                    location: "Not Specified (Contact Page)",
+                    startTime,
+                    honeypot: "", // Add if needed, or keeping simple
+                }),
+            });
 
-        setIsSubmitting(false);
-        setSubmitted(true);
-        console.log("Form submitted:", formData);
+            if (response.ok) {
+                setSubmitted(true);
+                setFormData({
+                    fullName: "",
+                    phone: "",
+                    email: "",
+                    projectType: "Kitchen",
+                    message: "",
+                });
+            } else {
+                const data = await response.json();
+                alert(data.error || "Something went wrong.");
+            }
+        } catch (error) {
+            alert("Connection error. Please try again.");
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const resetForm = () => {
         setSubmitted(false);
-        setFormData({
-            fullName: "",
-            phone: "",
-            email: "",
-            projectType: "Kitchen",
-            message: "",
-        });
     };
 
     const messageActive = messageFocused || formData.message.length > 0;
@@ -277,7 +301,7 @@ const ContactPage = () => {
             {/* ═══════════════════════════════════════
           Form + Info Section — Clean, elevated
           ═══════════════════════════════════════ */}
-            <section className="py-20 md:py-32 bg-brand-surface">
+            <section id="contact-form" className="py-20 md:py-32 bg-brand-surface">
                 <div className="container mx-auto px-6 md:px-16">
                     {/* Section header */}
                     <div className="text-center mb-16 md:mb-24">
@@ -636,28 +660,39 @@ const ContactPage = () => {
           Map Section — Clean embed with overlay
           ═══════════════════════════════════════ */}
             <section className="relative group/map">
-                <div className="h-[400px] md:h-[500px] w-full bg-brand-light overflow-hidden">
+                <div className="h-[400px] md:h-[600px] w-full bg-brand-light overflow-hidden rounded-xl shadow-inner mx-auto max-w-[95%] mb-12 border border-brand-border/20">
                     <iframe
-                        title="Alufurn Studio Location"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d112234.3986427303!2d77.01711!3d28.459497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d19d582e38859%3A0x2cf5de8c5c2d0084!2sGurugram%2C%20Haryana!5e0!3m2!1sen!2sin!4v1712640000000!5m2!1sen!2sin"
+                        title="Alufurn Studio Location — Patna"
+                        src="https://www.google.com/maps?q=25.6117,85.1426&output=embed"
                         width="100%"
                         height="100%"
-                        style={{ border: 0, filter: "grayscale(80%) contrast(1.05)" }}
+                        style={{ border: 0 }}
                         allowFullScreen
                         loading="lazy"
                         referrerPolicy="no-referrer-when-downgrade"
-                        className="group-hover/map:grayscale-0 transition-all duration-1000"
+                        className="transition-all duration-1000"
                     />
                 </div>
-                {/* Map overlay label */}
-                <div
-                    className="absolute top-6 left-6 md:top-8 md:left-8 bg-white/95 backdrop-blur-sm
-                      px-5 py-3 shadow-lg flex items-center gap-3 pointer-events-none"
-                >
-                    <MapPin size={14} className="text-brand-gold" />
-                    <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-brand-primary">
-                        Our Studio — Gurugram
-                    </span>
+                
+                {/* Map overlay labels & Actions */}
+                <div className="absolute top-10 left-[5%] right-[5%] flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pointer-events-none">
+                    <div className="bg-white/95 backdrop-blur-sm px-6 py-4 shadow-xl border border-brand-border/10 flex items-center gap-3">
+                        <MapPin size={16} className="text-brand-gold" />
+                        <div className="flex flex-col">
+                            <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-brand-primary">Our Showroom</span>
+                            <span className="text-[12px] font-medium text-brand-primary/60">Patna, Bihar</span>
+                        </div>
+                    </div>
+
+                    <a
+                        href="https://maps.app.goo.gl/9CuuLSiMVcXLk3rY6"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="pointer-events-auto group/btn flex items-center gap-3 bg-brand-primary text-white px-8 py-4 text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-brand-gold transition-all duration-500 shadow-2xl"
+                    >
+                        Open in Maps
+                        <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
+                    </a>
                 </div>
             </section>
 
@@ -721,6 +756,7 @@ const ContactPage = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.3 }}
+                        onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
                         className="group/cta relative inline-flex items-center gap-3 overflow-hidden
                        border border-brand-gold/40 text-white
                        px-10 md:px-14 py-4 md:py-5

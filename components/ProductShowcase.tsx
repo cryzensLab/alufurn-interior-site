@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 /**
  * ShowcaseItem Component
@@ -12,11 +13,13 @@ const ShowcaseItem = ({
     title,
     description,
     image,
+    link,
     reverse = false
 }: {
     title: string;
     description: string;
     image: string;
+    link: string;
     reverse?: boolean;
 }) => {
     return (
@@ -48,9 +51,12 @@ const ShowcaseItem = ({
                 <p className="text-brand-primary/80 leading-relaxed font-medium text-[11px] md:text-[13px] max-w-sm">
                     {description}
                 </p>
-                <button className="mt-4 text-brand-gold text-[8px] font-bold uppercase tracking-[0.2em] flex items-center gap-2 hover:gap-4 transition-all duration-300 group">
+                <Link
+                    href={link}
+                    className="mt-4 text-brand-gold text-[8px] font-bold uppercase tracking-[0.2em] flex items-center gap-2 hover:gap-4 transition-all duration-300 group"
+                >
                     Explore {title} <ArrowRight size={10} className="transition-transform" />
-                </button>
+                </Link>
             </motion.div>
         </div>
     );
@@ -67,17 +73,20 @@ export default function ProductShowcase() {
         {
             title: "Vanity",
             image: "/images/vanity_01.png",
-            desc: "Elegant bathroom solutions"
+            desc: "Elegant bathroom solutions",
+            link: "/product#vanity"
         },
         {
             title: "Aluminium Panels",
             image: "/images/wallpanel_01.jpg",
-            desc: "Modern architectural finishes"
+            desc: "Modern architectural finishes",
+            link: "/product#aluminium-panels"
         },
         {
             title: "Interior Doors",
             image: "/images/door_01.png",
-            desc: "Premium wood and glass designs"
+            desc: "Premium wood and glass designs",
+            link: "/product#interior-doors"
         }
     ];
 
@@ -106,12 +115,14 @@ export default function ProductShowcase() {
                         title="Kitchen"
                         description="Experience the perfect blend of form and function. Our bespoke kitchens are crafted with precision, featuring premium materials and state-of-the-art integration to elevate your culinary space."
                         image="/images/kitchen_01.jpg"
+                        link="/product#kitchen"
                     />
 
                     <ShowcaseItem
                         title="Wardrobe"
                         description="Transform your storage into a statement of luxury. Our intelligently designed wardrobes combine sophisticated aesthetics with unparalleled organization for a seamless lifestyle."
                         image="/images/wardrobe_01.jpg"
+                        link="/product#wardrobe"
                         reverse
                     />
                 </div>
@@ -141,40 +152,42 @@ export default function ProductShowcase() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.8, delay: index * 0.2 }}
-                                className="group cursor-pointer"
+                                className="group"
                             >
-                                <div className="relative aspect-[3/2] overflow-hidden mb-8 bg-brand-light">
-                                    <motion.img
-                                        whileHover={{ scale: 1.05 }}
-                                        whileInView={{ scale: [1, 1.05, 1] }}
-                                        viewport={{ once: true, margin: "-50px" }}
-                                        transition={{ duration: 1.5 }}
-                                        src={product.image}
-                                        alt={product.title}
-                                        className="w-full h-full object-cover brightness-90 md:group-hover:brightness-100 transition-all duration-700"
-                                        referrerPolicy="no-referrer"
-                                    />
-                                    <div className="absolute inset-0 bg-brand-primary/10 md:group-hover:bg-transparent transition-colors duration-500" />
-                                </div>
-
-                                <div className="flex justify-between items-start">
-                                    <div>
-                                        <h3 className="text-sm md:text-xl font-bold text-brand-primary uppercase tracking-tight mb-2">
-                                            {product.title}
-                                        </h3>
-                                        <p className="text-brand-primary/60 text-[10px] md:text-xs font-light tracking-widest uppercase">
-                                            {product.desc}
-                                        </p>
+                                <Link href={product.link} className="block cursor-pointer">
+                                    <div className="relative aspect-[3/2] overflow-hidden mb-8 bg-brand-light">
+                                        <motion.img
+                                            whileHover={{ scale: 1.05 }}
+                                            whileInView={{ scale: [1, 1.05, 1] }}
+                                            viewport={{ once: true, margin: "-50px" }}
+                                            transition={{ duration: 1.5 }}
+                                            src={product.image}
+                                            alt={product.title}
+                                            className="w-full h-full object-cover brightness-90 md:group-hover:brightness-100 transition-all duration-700"
+                                            referrerPolicy="no-referrer"
+                                        />
+                                        <div className="absolute inset-0 bg-brand-primary/10 md:group-hover:bg-transparent transition-colors duration-500" />
                                     </div>
-                                    <motion.div
-                                        whileInView={{ x: [0, 5, 0] }}
-                                        viewport={{ once: true }}
-                                        transition={{ delay: 0.5 }}
-                                        className="w-10 h-10 border border-brand-primary/10 flex items-center justify-center md:group-hover:bg-brand-primary md:group-hover:text-white transition-all duration-500"
-                                    >
-                                        <ArrowRight size={18} />
-                                    </motion.div>
-                                </div>
+
+                                    <div className="flex justify-between items-start">
+                                        <div>
+                                            <h3 className="text-sm md:text-xl font-bold text-brand-primary uppercase tracking-tight mb-2">
+                                                {product.title}
+                                            </h3>
+                                            <p className="text-brand-primary/60 text-[10px] md:text-xs font-light tracking-widest uppercase">
+                                                {product.desc}
+                                            </p>
+                                        </div>
+                                        <motion.div
+                                            whileInView={{ x: [0, 5, 0] }}
+                                            viewport={{ once: true }}
+                                            transition={{ delay: 0.5 }}
+                                            className="w-10 h-10 border border-brand-primary/10 flex items-center justify-center md:group-hover:bg-brand-primary md:group-hover:text-white transition-all duration-500"
+                                        >
+                                            <ArrowRight size={18} />
+                                        </motion.div>
+                                    </div>
+                                </Link>
                             </motion.div>
                         ))}
                     </div>

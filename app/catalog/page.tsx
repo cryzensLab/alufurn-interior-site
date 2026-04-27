@@ -20,6 +20,10 @@ export default function CatalogSection() {
         quantity: '',
         message: ''
     });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+    const [submitMessage, setSubmitMessage] = useState('');
+
 
     const productOptions = [
         "Kitchen Cabinets",
@@ -40,10 +44,58 @@ export default function CatalogSection() {
         }));
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log('Catalog Request:', formData);
-        alert('Thank you! Your catalog request has been submitted. We will contact you within 24 hours.');
+        setIsSubmitting(true);
+        setSubmitStatus('idle');
+
+        try {
+            const res = await fetch('/api/quote', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: formData.name,
+                    email: formData.email,
+                    phone: formData.phone,
+                    city: formData.city,
+                    location: `${formData.city}, ${formData.country}`,
+                    projectType: 'Catalog Download Request',
+                    product: formData.products,
+                    quantity: formData.quantity,
+                    message: formData.message,
+                    uploadedFile: 'N/A' // Placeholder for now, as file upload is not fully implemented
+                }),
+            });
+
+            if (res.ok) {
+                setSubmitStatus('success');
+                setSubmitMessage('Thank you! Your catalog request has been submitted. We will contact you within 24 hours.');
+                setFormData({
+                    name: '',
+                    email: '',
+                    phone: '',
+                    city: '',
+                    country: 'India',
+                    products: [],
+                    quantity: '',
+                    message: ''
+                });
+                alert('Thank you! Your catalog request has been submitted. We will contact you within 24 hours.');
+            } else {
+                const data = await res.json();
+                setSubmitStatus('error');
+                setSubmitMessage(data.error || 'Something went wrong. Please try again.');
+                alert(data.error || 'Something went wrong. Please try again.');
+            }
+        } catch (error) {
+            setSubmitStatus('error');
+            setSubmitMessage('An error occurred. Please try again later.');
+            alert('An error occurred. Please try again later.');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -226,12 +278,20 @@ export default function CatalogSection() {
                                     whileHover={{ scale: 1.02 }}
                                     whileTap={{ scale: 0.98 }}
                                     whileInView={{ scale: [1, 1.02, 1] }}
-                                    viewport={{ once: true, delay: 0.5 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.5 }}
                                     type="submit"
-                                    className="bg-brand-gold text-white px-20 py-5 text-[10px] font-bold uppercase tracking-[0.5em] md:hover:bg-white md:hover:text-brand-primary transition-all duration-500 shadow-2xl"
+                                    disabled={isSubmitting}
+                                    className="bg-brand-gold text-white px-20 py-5 text-[10px] font-bold uppercase tracking-[0.5em] md:hover:bg-white md:hover:text-brand-primary transition-all duration-500 shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
-                                    Submit
+                                    {isSubmitting ? 'Submitting...' : 'Submit'}
                                 </motion.button>
+                                {submitStatus === 'success' && (
+                                    <p className="mt-4 text-green-400 text-sm">{submitMessage}</p>
+                                )}
+                                {submitStatus === 'error' && (
+                                    <p className="mt-4 text-red-400 text-sm">{submitMessage}</p>
+                                )}
                             </div>
                         </form>
                     </div>

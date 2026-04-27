@@ -13,19 +13,23 @@ export async function addToSheet(data: any) {
 
     await sheets.spreadsheets.values.append({
         spreadsheetId: process.env.GOOGLE_SHEET_ID,
-        range: "Sheet1!A:I",
+        range: "Sheet1!A:M",
         valueInputOption: "USER_ENTERED",
         requestBody: {
             values: [[
                 data.name,
                 data.phone,
-                data.email,
-                data.projectType,
-                Array.isArray(data.product) ? data.product.join(", ") : data.product,
-                data.budget,
-                data.location,
-                data.message,
-                new Date().toLocaleString(),
+                data.email || "N/A",
+                data.projectType || "Experience Center Visit",
+                Array.isArray(data.product) ? data.product.join(", ") : (data.product || "Visit Inquiry"),
+                data.budget || "N/A",
+                data.location || data.city || "N/A",
+                data.message || "Booked through Experience Center page",
+                new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
+                data.scheduleDate || "N/A",
+                data.uploadedFile || "N/A",
+                data.quantity || "N/A",
+                data.status || "New",
             ]],
         },
     });

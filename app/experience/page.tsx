@@ -1,4 +1,5 @@
 "use client";
+export const dynamic = "force-dynamic";
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
@@ -27,11 +28,34 @@ export default function ExperienceCenter() {
         date: '',
         city: 'Gurugram'
     });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSuccess, setIsSuccess] = useState(false);
+    const [startTime] = useState(Date.now());
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log('Booking Request:', formData);
-        alert('Thank you! Your visit has been scheduled. Our team will contact you to confirm the timing.');
+        setIsSubmitting(true);
+
+        try {
+            const response = await fetch("/api/quote", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ ...formData, startTime }),
+            });
+
+            if (response.ok) {
+                setIsSuccess(true);
+                setFormData({ name: '', phone: '', date: '', city: 'Gurugram' });
+                alert('Thank you! Your visit has been scheduled. Our team will contact you to confirm the timing.');
+            } else {
+                const data = await response.json();
+                alert(data.error || "Something went wrong.");
+            }
+        } catch (error) {
+            alert("Connection error. Please try again.");
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const features = [
@@ -72,7 +96,7 @@ export default function ExperienceCenter() {
             <section className="relative h-screen flex items-center justify-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img
-                        src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop"
+                        src="/images/experience.png"
                         alt="ALUFURN Showroom"
                         className="w-full h-full object-cover"
                     />
@@ -105,16 +129,12 @@ export default function ExperienceCenter() {
                         Experience Aluminium Interiors Like Never Before. Precision meets luxury in every square inch.
                     </motion.p>
 
-                    <motion.a
-                        href="#book"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        whileInView={{ scale: [1, 1.05, 1] }}
-                        viewport={{ once: true }}
+                    <Link
+                        href="/contact"
                         className="inline-block bg-brand-gold text-white px-16 py-6 text-[10px] font-bold uppercase tracking-[0.5em] md:hover:bg-white md:hover:text-brand-primary transition-all duration-500 shadow-2xl"
                     >
                         Book a Visit
-                    </motion.a>
+                    </Link>
                 </div>
             </section>
 
@@ -161,7 +181,7 @@ export default function ExperienceCenter() {
                                 className="relative aspect-[3/2] overflow-hidden shadow-2xl"
                             >
                                 <img
-                                    src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?q=80&w=1600&auto=format&fit=crop"
+                                    src="/images/experience_1.png"
                                     alt="Experience"
                                     className="w-full h-full object-cover brightness-90 md:hover:brightness-100 transition-all duration-1000"
                                 />
@@ -239,7 +259,7 @@ export default function ExperienceCenter() {
                 </div>
             </section>
 
-            {/* Gallery Section */}
+            {/* Gallery Section - Hidden for future use
             <section className="py-32 bg-brand-primary overflow-hidden">
                 <div className="container mx-auto px-6 md:px-12">
                     <div className="flex justify-between items-end mb-16">
@@ -276,50 +296,62 @@ export default function ExperienceCenter() {
                     </div>
                 </div>
             </section>
+            */}
 
-            {/* Visit Information */}
-            <section className="py-32 bg-white">
+            {/* Visit Information - Map Section */}
+            <section className="py-32 bg-white relative group/map overflow-hidden">
                 <div className="container mx-auto px-6 md:px-12">
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                        <div className="lg:col-span-2 h-[500px] bg-gray-100 brightness-90 hover:brightness-100 transition-all duration-1000">
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d112234.3986427303!2d77.01711!3d28.459497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d19d582e38859%3A0x2cf5de8c5c2d0084!2sGurugram%2C%20Haryana!5e0!3m2!1sen!2sin!4v1712640000000!5m2!1sen!2sin"
-                                width="100%"
-                                height="100%"
-                                style={{ border: 0 }}
-                                allowFullScreen
-                                loading="lazy"
-                                referrerPolicy="no-referrer-when-downgrade"
-                            ></iframe>
-                        </div>
-
-                        <div className="flex flex-col justify-center space-y-12">
-                            <div>
-                                <h3 className="text-2xl font-bold text-brand-primary mb-8 uppercase tracking-widest">Visit Information</h3>
-                                <div className="space-y-8">
-                                    <div className="flex items-start gap-6">
-                                        <MapPin className="text-brand-gold shrink-0" size={24} />
-                                        <div>
-                                            <p className="text-[10px] uppercase tracking-widest font-bold text-brand-primary/40 mb-1">Location</p>
-                                            <p className="text-lg font-medium text-brand-primary">123 Industrial Estate, Phase II<br />Gurugram, Haryana, India</p>
-                                        </div>
-                                    </div>
-                                    <div className="flex items-start gap-6">
-                                        <Clock className="text-brand-gold shrink-0" size={24} />
-                                        <div>
-                                            <p className="text-[10px] uppercase tracking-widest font-bold text-brand-primary/40 mb-1">Timings</p>
-                                            <p className="text-lg font-medium text-brand-primary">Mon - Sat: 10:00 AM - 7:00 PM</p>
-                                            <p className="text-sm text-brand-primary/60">Sunday by Appointment Only</p>
-                                        </div>
-                                    </div>
-                                    <div className="flex items-start gap-6">
-                                        <Phone className="text-brand-gold shrink-0" size={24} />
-                                        <div>
-                                            <p className="text-[10px] uppercase tracking-widest font-bold text-brand-primary/40 mb-1">Contact</p>
-                                            <p className="text-lg font-medium text-brand-primary">+91 123 456 7890</p>
-                                        </div>
-                                    </div>
+                     <div className="h-[400px] md:h-[600px] w-full bg-brand-light overflow-hidden rounded-xl shadow-inner mx-auto mb-12 border border-brand-border/20 relative">
+                        <iframe
+                            title="Alufurn Studio Location — Patna"
+                            src="https://www.google.com/maps?q=25.6117,85.1426&output=embed"
+                            width="100%"
+                            height="100%"
+                            style={{ border: 0 }}
+                            allowFullScreen
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
+                            className="transition-all duration-1000"
+                        />
+                        
+                        {/* Map overlay labels & Actions */}
+                        <div className="absolute top-8 left-8 right-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pointer-events-none">
+                            <div className="bg-white/95 backdrop-blur-sm px-6 py-4 shadow-xl border border-brand-border/10 flex items-center gap-3 pointer-events-auto">
+                                <MapPin size={16} className="text-brand-gold" />
+                                <div className="flex flex-col">
+                                    <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-brand-primary">Our Showroom</span>
+                                    <span className="text-[12px] font-medium text-brand-primary/60">Patna, Bihar</span>
                                 </div>
+                            </div>
+
+                            <a
+                                href="https://maps.app.goo.gl/9CuuLSiMVcXLk3rY6"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="pointer-events-auto group/btn flex items-center gap-3 bg-brand-primary text-white px-8 py-4 text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-brand-gold transition-all duration-500 shadow-2xl"
+                            >
+                                Open in Maps
+                                <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
+                            </a>
+                        </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12">
+                         <div>
+                            <p className="text-[10px] uppercase tracking-widest font-bold text-brand-primary/40 mb-4">Location Details</p>
+                            <h3 className="text-2xl font-bold text-brand-primary mb-4 uppercase tracking-widest">Visit our Showroom</h3>
+                            <p className="text-lg font-medium text-brand-primary leading-relaxed">G-15, Shashi Complex Exhibition Road<br />Patna, Bihar, India - 800001</p>
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                            <div>
+                                <p className="text-[10px] uppercase tracking-widest font-bold text-brand-primary/40 mb-2">Timings</p>
+                                <p className="text-lg font-medium text-brand-primary leading-tight">Mon - Sat: 10:00 AM - 7:00 PM</p>
+                                <p className="text-sm text-brand-primary/60 mt-1 italic">Sunday by Appointment Only</p>
+                            </div>
+                            <div>
+                                <p className="text-[10px] uppercase tracking-widest font-bold text-brand-primary/40 mb-2">Contact</p>
+                                <p className="text-lg font-medium text-brand-primary">+91 776 397 0474</p>
+                                <p className="text-sm text-brand-primary/60 mt-1 italic">enquiries@alufurn.com</p>
                             </div>
                         </div>
                     </div>
@@ -394,12 +426,13 @@ export default function ExperienceCenter() {
                                 </div>
 
                                 <motion.button
-                                    whileHover={{ scale: 1.02 }}
-                                    whileTap={{ scale: 0.98 }}
+                                    whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                                    whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
                                     type="submit"
-                                    className="w-full bg-brand-primary text-white py-6 text-[10px] font-bold uppercase tracking-[0.5em] hover:bg-brand-gold transition-all duration-500 shadow-xl"
+                                    disabled={isSubmitting}
+                                    className={`w-full bg-brand-primary text-white py-6 text-[10px] font-bold uppercase tracking-[0.5em] hover:bg-brand-gold transition-all duration-500 shadow-xl ${isSubmitting ? "opacity-50 cursor-not-allowed" : ""}`}
                                 >
-                                    Schedule Visit
+                                    {isSubmitting ? "Scheduling..." : "Schedule Visit"}
                                 </motion.button>
                             </form>
                         </div>

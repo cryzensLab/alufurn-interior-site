@@ -40,7 +40,6 @@ const navLinks = [
     { name: "Products", href: "/product" },
     { name: "Experience Center", href: "/experience" },
     { name: "Catalog", href: "/catalog" },
-    { name: "Franchise", href: "/franchise" },
     { name: "Contact", href: "/contact" },
 ];
 
@@ -94,7 +93,7 @@ export default function Navbar({ onOpenQuote }: { onOpenQuote?: () => void }) {
     }, [mobileMenuOpen]);
 
     /* ── Derived state ── */
-    const isSecondaryPage = ["/contact", "/catalog", "/franchise", "/experience", "/product"].includes(
+    const isSecondaryPage = ["/contact", "/catalog", "/experience", "/product"].includes(
         pathname
     );
     const isWhiteNavbar = isScrolled || showProductsDropdown || isSecondaryPage;

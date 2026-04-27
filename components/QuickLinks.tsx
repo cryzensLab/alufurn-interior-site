@@ -22,10 +22,10 @@ export default function QuickLinks() {
             image: "/images/projects.png"
         },
         {
-            title: "Franchise Opportunity",
-            desc: "Partner with a global leader",
-            href: "/franchise",
-            image: "/images/franchise.png"
+            title: "Experience Center",
+            desc: "Visit us for a live demo",
+            href: "/experience",
+            image: "/images/experience.png"
         }
     ];
     return (

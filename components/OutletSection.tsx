@@ -11,11 +11,11 @@ import { MapPin } from "lucide-react";
  */
 export default function Outlets() {
     const outlets = [
-        { city: "PATNA", address: "G-15, Shashi Complex Exhibition Road Patna - 800001 Bihar, India", type: "FLAGSHIP STUDIO" },
-        { city: "JAIPUR", address: "131-132, Motilal Omparkash Opp. Jhotwara Police Station Near Amazon Office, Main Niwaru Road Jhotwara Industrial Area Jaipur - 302012 Rajasthan, India", type: "EXPERIENCE CENTER" },
-        { city: "CALICUT", address: "Behind Industrial EstateGround Floor 42/1680, Kunnummal Nallalam, P.O Calicut", type: "DESIGN STUDIO" },
-        { city: "Opeing soon", address: "", type: "EXPERIENCE CENTER" },
-        { city: "Opeinig soon", address: "", type: "BOUTIQUE STUDIO" }
+        { city: "PATNA", address: "G-15, Shashi Complex Exhibition Road", type: "FLAGSHIP STUDIO" },
+        { city: "JAIPUR", address: "131-132, Main Niwaru Road Jhotwara Industrial Area", type: "EXPERIENCE CENTER" },
+        { city: "CALICUT", address: "Behind Industrial Estate Ground Floor 42/1680, Kunnummal Nallalam", type: "DESIGN STUDIO" }
+        // { city: "Opeing soon", address: "", type: "EXPERIENCE CENTER" },
+        // { city: "Opeinig soon", address: "", type: "BOUTIQUE STUDIO" }
     ];
 
     return (
