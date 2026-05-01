@@ -1,5 +1,4 @@
 "use client";
-export const dynamic = "force-dynamic";
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
@@ -16,6 +15,7 @@ import {
     ArrowRight
 } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 /**
  * ExperienceCenter component converted to Next.js App Router.
@@ -95,10 +95,11 @@ export default function ExperienceCenter() {
             {/* Hero Section */}
             <section className="relative h-screen flex items-center justify-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
-                    <img
+                    <Image
                         src="/images/contact_bg.webp"
                         alt="ALUFURN Showroom"
-                        className="w-full h-full object-cover"
+                        fill
+                        className="object-cover"
                     />
                     <div className="absolute inset-0 bg-brand-primary/60 backdrop-blur-[2px]" />
                 </div>
@@ -180,10 +181,11 @@ export default function ExperienceCenter() {
                                 viewport={{ once: true }}
                                 className="relative aspect-[3/2] overflow-hidden shadow-2xl"
                             >
-                                <img
+                                <Image
                                     src="/images/experience_1.webp"
                                     alt="Experience"
-                                    className="w-full h-full object-cover brightness-90 md:hover:brightness-100 transition-all duration-1000"
+                                    fill
+                                    className="object-cover brightness-90 md:hover:brightness-100 transition-all duration-1000"
                                 />
                             </motion.div>
                             <div className="absolute -top-10 -left-10 w-40 h-40 border-l border-t border-brand-gold/30 hidden md:block" />
@@ -284,12 +286,13 @@ export default function ExperienceCenter() {
                                 whileHover={{ scale: 1.05 }}
                                 whileInView={{ scale: [1, 1.05, 1] }}
                                 viewport={{ once: true }}
-                                className="aspect-[3/2] overflow-hidden cursor-pointer"
+                                className="relative aspect-[3/2] overflow-hidden cursor-pointer"
                             >
-                                <img
+                                <Image
                                     src={img}
                                     alt={`Showroom ${index + 1}`}
-                                    className="w-full h-full object-cover brightness-90 md:hover:brightness-100 transition-all duration-700"
+                                    fill
+                                    className="object-cover brightness-90 md:hover:brightness-100 transition-all duration-700"
                                 />
                             </motion.div>
                         ))}

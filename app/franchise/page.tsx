@@ -14,6 +14,7 @@ import {
     Truck,
     Download
 } from 'lucide-react';
+import Image from 'next/image';
 
 /**
  * FranchiseSection component converted to Next.js App Router.
@@ -68,10 +69,11 @@ export default function FranchiseSection() {
             {/* Hero Section */}
             <section className="relative h-screen flex items-center justify-center overflow-hidden bg-brand-primary">
                 <div className="absolute inset-0 z-0">
-                    <img
+                    <Image
                         src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?q=80&w=2000&auto=format&fit=crop"
                         alt="Luxury Interior"
-                        className="w-full h-full object-cover opacity-40 brightness-50"
+                        fill
+                        className="object-cover opacity-40 brightness-50"
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/60 via-brand-primary/40 to-brand-primary" />
                 </div>
@@ -160,10 +162,11 @@ export default function FranchiseSection() {
                                 viewport={{ once: true }}
                                 className="relative aspect-square overflow-hidden"
                             >
-                                <img
+                                <Image
                                     src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=1600&auto=format&fit=crop"
                                     alt="Manufacturing Support"
-                                    className="w-full h-full object-cover brightness-75"
+                                    fill
+                                    className="object-cover brightness-75"
                                 />
                                 <div className="absolute inset-0 bg-brand-primary/20" />
                             </motion.div>
@@ -224,10 +227,11 @@ export default function FranchiseSection() {
                                 viewport={{ once: true }}
                                 className="relative aspect-[3/2] overflow-hidden group cursor-pointer"
                             >
-                                <img
+                                <Image
                                     src={item.img}
                                     alt={item.name}
-                                    className="w-full h-full object-cover brightness-90 md:group-hover:brightness-100 transition-all duration-1000 md:group-hover:scale-110"
+                                    fill
+                                    className="object-cover brightness-90 md:group-hover:brightness-100 transition-all duration-1000 md:group-hover:scale-110"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-brand-primary/80 to-transparent opacity-60 md:group-hover:opacity-80 transition-opacity" />
                                 <div className="absolute bottom-8 left-8">

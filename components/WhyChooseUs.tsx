@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Image from "next/image";
 /**
  * WhyChooseUs Component
  * 
@@ -67,11 +68,12 @@ export default function WhyChooseUs() {
                             transition={{ duration: 1 }}
                             className="relative"
                         >
-                            <div className="aspect-video overflow-hidden border border-white/10">
-                                <img
+                            <div className="aspect-video overflow-hidden border border-white/10 relative">
+                                <Image
                                     src="/images/manufacturing.webp"
                                     alt="Modern Manufacturing"
-                                    className="w-full h-full object-cover brightness-90 hover:brightness-100 transition-all duration-1000"
+                                    fill
+                                    className="object-cover brightness-90 hover:brightness-100 transition-all duration-1000"
                                     referrerPolicy="no-referrer"
                                 />
                             </div>

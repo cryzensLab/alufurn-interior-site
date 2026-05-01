@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 /**
  * QuickLinks Component
  * 
@@ -46,10 +47,11 @@ export default function QuickLinks() {
                             >
                                 {/* Background Image with Overlay */}
                                 <div className="absolute inset-0 z-0">
-                                    <img
+                                    <Image
                                         src={link.image}
                                         alt={link.title}
-                                        className="w-full h-full object-cover opacity-40 group-hover:opacity-60 group-hover:scale-105 transition-all duration-700 ease-out"
+                                        fill
+                                        className="object-cover opacity-40 group-hover:opacity-60 group-hover:scale-105 transition-all duration-700 ease-out"
                                         referrerPolicy="no-referrer"
                                     />
                                     {/* Cinematic Gradient Overlay */}

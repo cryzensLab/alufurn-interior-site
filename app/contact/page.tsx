@@ -1,5 +1,4 @@
 "use client";
-export const dynamic = "force-dynamic";
 
 import React, { useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
@@ -13,6 +12,7 @@ import {
     CheckCircle,
     ChevronDown,
 } from "lucide-react";
+import Image from "next/image";
 
 /* ──────────────────────────────────────────────
    Types
@@ -216,10 +216,11 @@ const ContactPage = () => {
             <section className="relative h-[50vh] md:h-[60vh] flex items-center justify-center overflow-hidden bg-brand-primary-deep">
                 {/* Textured background */}
                 <div className="absolute inset-0 z-0">
-                    <img
-                        src="images/contact_bg.webp"
+                    <Image
+                        src="/images/contact_bg.webp"
                         alt="Industrial Texture"
-                        className="w-full h-full object-cover opacity-45 brightness-50 scale-105"
+                        fill
+                        className="object-cover opacity-45 brightness-50 scale-105"
                         referrerPolicy="no-referrer"
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-brand-primary-deep/80 via-brand-primary-deep/50 to-brand-primary-deep" />
@@ -702,10 +703,11 @@ const ContactPage = () => {
             <section className="relative py-24 md:py-32 bg-brand-primary-deep text-white overflow-hidden">
                 {/* Background texture */}
                 <div className="absolute inset-0 opacity-[0.07]">
-                    <img
+                    <Image
                         src="/images/contact_bg2.webp"
-                        alt=""
-                        className="w-full h-full object-cover"
+                        alt="Background Texture"
+                        fill
+                        className="object-cover"
                         referrerPolicy="no-referrer"
                     />
                 </div>

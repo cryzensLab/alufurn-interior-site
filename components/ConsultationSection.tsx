@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { useQuote } from "./AppWrapper";
 /**
  * Consultation Component
@@ -25,10 +26,11 @@ export default function Consultation() {
 
             {/* Background Architectural Detail */}
             <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
-                <img
+                <Image
                     src="https://images.unsplash.com/photo-1503387762-592dec5832f2?q=80&w=2000&auto=format&fit=crop"
                     alt="Architectural Background"
-                    className="w-full h-full object-cover brightness-50"
+                    fill
+                    className="object-cover brightness-50"
                     referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-brand-primary/80" />

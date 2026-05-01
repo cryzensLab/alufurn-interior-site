@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Upload, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 /**
  * CatalogSection component converted to Next.js App Router.
@@ -132,10 +133,11 @@ export default function CatalogSection() {
                 >
                     {/* Background Texture */}
                     <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
-                        <img
+                        <Image
                             src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1600&auto=format&fit=crop"
                             alt="Interior Background"
-                            className="w-full h-full object-cover brightness-50"
+                            fill
+                            className="object-cover brightness-50"
                         />
                     </div>
 
@@ -177,7 +179,9 @@ export default function CatalogSection() {
                                     <label className="block text-[10px] uppercase tracking-widest font-bold text-white/40 mb-2">* Tel/Whatsapp</label>
                                     <div className="flex">
                                         <div className="bg-white/10 border border-white/10 px-3 flex items-center gap-2 text-xs">
-                                            <img src="https://flagcdn.com/w20/in.png" alt="India" className="w-4" />
+                                            <div className="relative w-4 h-3">
+                                                <Image src="https://flagcdn.com/w20/in.png" alt="India" fill className="object-cover" />
+                                            </div>
                                             <span>+91</span>
                                         </div>
                                         <input
