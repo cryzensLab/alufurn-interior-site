@@ -217,9 +217,9 @@ const ContactPage = () => {
                 {/* Textured background */}
                 <div className="absolute inset-0 z-0">
                     <img
-                        src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2000&auto=format&fit=crop"
+                        src="images/contact_bg.webp"
                         alt="Industrial Texture"
-                        className="w-full h-full object-cover opacity-15 brightness-50 scale-105"
+                        className="w-full h-full object-cover opacity-45 brightness-50 scale-105"
                         referrerPolicy="no-referrer"
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-brand-primary-deep/80 via-brand-primary-deep/50 to-brand-primary-deep" />
@@ -673,7 +673,7 @@ const ContactPage = () => {
                         className="transition-all duration-1000"
                     />
                 </div>
-                
+
                 {/* Map overlay labels & Actions */}
                 <div className="absolute top-10 left-[5%] right-[5%] flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pointer-events-none">
                     <div className="bg-white/95 backdrop-blur-sm px-6 py-4 shadow-xl border border-brand-border/10 flex items-center gap-3">
@@ -703,7 +703,7 @@ const ContactPage = () => {
                 {/* Background texture */}
                 <div className="absolute inset-0 opacity-[0.07]">
                     <img
-                        src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2000&auto=format&fit=crop"
+                        src="/images/contact_bg2.webp"
                         alt=""
                         className="w-full h-full object-cover"
                         referrerPolicy="no-referrer"

@@ -69,7 +69,7 @@ export default function WhyChooseUs() {
                         >
                             <div className="aspect-video overflow-hidden border border-white/10">
                                 <img
-                                    src="/images/manufacturing.png"
+                                    src="/images/manufacturing.webp"
                                     alt="Modern Manufacturing"
                                     className="w-full h-full object-cover brightness-90 hover:brightness-100 transition-all duration-1000"
                                     referrerPolicy="no-referrer"

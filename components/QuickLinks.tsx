@@ -13,19 +13,19 @@ export default function QuickLinks() {
             title: "Product Catalogue",
             desc: "Explore our full range of designs",
             href: "/catalog",
-            image: "/images/product_catalogue.png"
+            image: "/images/product_catalogue.webp"
         },
         {
             title: "Alufurn Projects",
             desc: "View our portfolio of excellence",
             href: "/projects",
-            image: "/images/projects.png"
+            image: "/images/projects.webp"
         },
         {
             title: "Experience Center",
             desc: "Visit us for a live demo",
             href: "/experience",
-            image: "/images/experience.png"
+            image: "/images/experience.webp"
         }
     ];
     return (

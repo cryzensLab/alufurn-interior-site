@@ -96,7 +96,7 @@ export default function ExperienceCenter() {
             <section className="relative h-screen flex items-center justify-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img
-                        src="/images/experience.png"
+                        src="/images/contact_bg.webp"
                         alt="ALUFURN Showroom"
                         className="w-full h-full object-cover"
                     />
@@ -181,7 +181,7 @@ export default function ExperienceCenter() {
                                 className="relative aspect-[3/2] overflow-hidden shadow-2xl"
                             >
                                 <img
-                                    src="/images/experience_1.png"
+                                    src="/images/experience_1.webp"
                                     alt="Experience"
                                     className="w-full h-full object-cover brightness-90 md:hover:brightness-100 transition-all duration-1000"
                                 />
@@ -301,7 +301,7 @@ export default function ExperienceCenter() {
             {/* Visit Information - Map Section */}
             <section className="py-32 bg-white relative group/map overflow-hidden">
                 <div className="container mx-auto px-6 md:px-12">
-                     <div className="h-[400px] md:h-[600px] w-full bg-brand-light overflow-hidden rounded-xl shadow-inner mx-auto mb-12 border border-brand-border/20 relative">
+                    <div className="h-[400px] md:h-[600px] w-full bg-brand-light overflow-hidden rounded-xl shadow-inner mx-auto mb-12 border border-brand-border/20 relative">
                         <iframe
                             title="Alufurn Studio Location — Patna"
                             src="https://www.google.com/maps?q=25.6117,85.1426&output=embed"
@@ -313,7 +313,7 @@ export default function ExperienceCenter() {
                             referrerPolicy="no-referrer-when-downgrade"
                             className="transition-all duration-1000"
                         />
-                        
+
                         {/* Map overlay labels & Actions */}
                         <div className="absolute top-8 left-8 right-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pointer-events-none">
                             <div className="bg-white/95 backdrop-blur-sm px-6 py-4 shadow-xl border border-brand-border/10 flex items-center gap-3 pointer-events-auto">
@@ -337,7 +337,7 @@ export default function ExperienceCenter() {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12">
-                         <div>
+                        <div>
                             <p className="text-[10px] uppercase tracking-widest font-bold text-brand-primary/40 mb-4">Location Details</p>
                             <h3 className="text-2xl font-bold text-brand-primary mb-4 uppercase tracking-widest">Visit our Showroom</h3>
                             <p className="text-lg font-medium text-brand-primary leading-relaxed">G-15, Shashi Complex Exhibition Road<br />Patna, Bihar, India - 800001</p>

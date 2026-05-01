@@ -17,7 +17,7 @@ function useScrollVisibility(debounceMs = 200) {
 
         rafRef.current = requestAnimationFrame(() => {
             const scrollY = window.scrollY;
-            const heroHeightPx = typeof window !== "undefined" ? window.innerHeight : 0; 
+            const heroHeightPx = typeof window !== "undefined" ? window.innerHeight : 0;
 
             setPastHero(scrollY > heroHeightPx);
             setIsScrolling(true);
@@ -81,12 +81,12 @@ export default function FloatingActions() {
     }, []);
 
     const openMail = useCallback(() => {
-        window.location.href = "mailto:info@alufurn.com";
+        window.location.href = "mailto:enquiries@alufurn.com";
     }, []);
 
     const openWhatsApp = useCallback(() => {
         window.open(
-            "https://wa.me/916297290910?text=Hi%20I%27m%20interested%20in%20ALUFURN.%20Please%20share%20details.",
+            "https://wa.me/917763970474?text=Hi%20I%27m%20interested%20in%20ALUFURN.%20Please%20share%20details.",
             "_blank",
             "noopener,noreferrer"
         );

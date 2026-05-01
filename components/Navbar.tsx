@@ -29,11 +29,11 @@ const locations = [
 ];
 
 const products = [
-    { name: "Kitchen Designs", image: "https://picsum.photos/seed/wholehouse/800/1000", href: "/product#kitchen" },
-    { name: "Wardrobe Solutions", image: "https://picsum.photos/seed/kitchen/800/1000", href: "/product#wardrobe" },
-    { name: "Vanity Units", image: "https://picsum.photos/seed/bedroom/800/1000", href: "/product#vanity" },
-    { name: "Interior Door", image: "https://picsum.photos/seed/door/800/1000", href: "/product#interior-doors" },
-    { name: "Custom Aluminium Panels", image: "https://picsum.photos/seed/rta/800/1000", href: "/product#aluminium-panels" },
+    { name: "Kitchen Designs", image: "/images/luxury_bespoke.webp", href: "/product#kitchen" },
+    { name: "Wardrobe Solutions", image: "/images/hinged-classic.webp", href: "/product#wardrobe" },
+    { name: "Vanity Units", image: "/images/double-basin.webp", href: "/product#vanity" },
+    { name: "Interior Door", image: "/images/pivot-grand.webp", href: "/product#interior-doors" },
+    { name: "Custom Aluminium Panels", image: "/images/wall-panel.webp", href: "/product#aluminium-panels" },
 ];
 
 const navLinks = [

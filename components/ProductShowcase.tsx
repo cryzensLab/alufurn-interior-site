@@ -72,19 +72,19 @@ export default function ProductShowcase() {
     const extendedProducts = [
         {
             title: "Vanity",
-            image: "/images/vanity_01.png",
+            image: "/images/vanity_01.webp",
             desc: "Elegant bathroom solutions",
             link: "/product#vanity"
         },
         {
             title: "Aluminium Panels",
-            image: "/images/wallpanel_01.jpg",
+            image: "/images/wallpanel_01.webp",
             desc: "Modern architectural finishes",
             link: "/product#aluminium-panels"
         },
         {
             title: "Interior Doors",
-            image: "/images/door_01.png",
+            image: "/images/door_01.webp",
             desc: "Premium wood and glass designs",
             link: "/product#interior-doors"
         }
@@ -114,14 +114,14 @@ export default function ProductShowcase() {
                     <ShowcaseItem
                         title="Kitchen"
                         description="Experience the perfect blend of form and function. Our bespoke kitchens are crafted with precision, featuring premium materials and state-of-the-art integration to elevate your culinary space."
-                        image="/images/kitchen_01.jpg"
+                        image="/images/kitchen_01.webp"
                         link="/product#kitchen"
                     />
 
                     <ShowcaseItem
                         title="Wardrobe"
                         description="Transform your storage into a statement of luxury. Our intelligently designed wardrobes combine sophisticated aesthetics with unparalleled organization for a seamless lifestyle."
-                        image="/images/wardrobe_01.jpg"
+                        image="/images/wardrobe_01.webp"
                         link="/product#wardrobe"
                         reverse
                     />
