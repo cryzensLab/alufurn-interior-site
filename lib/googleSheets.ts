@@ -1,8 +1,14 @@
 import { google } from "googleapis";
 
+
+const credentials = JSON.parse(
+  Buffer.from(process.env.GOOGLE_CREDENTIALS_BASE64!, "base64").toString("utf-8")
+);
+
+
 const auth = new google.auth.JWT({
-  email: process.env.GOOGLE_CLIENT_EMAIL,
-  key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+  email: credentials.client_email,
+  key: credentials.private_key,
   scopes: ["https://www.googleapis.com/auth/spreadsheets"],
 });
 
@@ -25,7 +31,7 @@ export async function addToSheet(data: any) {
         data.budget || "N/A",
         data.location || data.city || "N/A",
         data.message || "Booked through Experience Center page",
-        new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
+        new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }),
         data.scheduleDate || "N/A",
         data.uploadedFile || "N/A",
         data.quantity || "N/A",
