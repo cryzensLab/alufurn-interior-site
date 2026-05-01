@@ -1,40 +1,16 @@
 import { google } from "googleapis";
 
-// ✅ SAFE AUTH INIT (won’t crash server)
-let sheets: any = null;
+const auth = new google.auth.GoogleAuth({
+  credentials: {
+    client_email: process.env.GOOGLE_CLIENT_EMAIL,
+    private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+  },
+  scopes: ["https://www.googleapis.com/auth/spreadsheets"],
+});
 
-try {
-  if (process.env.GOOGLE_CREDENTIALS_BASE64) {
-    const decoded = Buffer.from(
-      process.env.GOOGLE_CREDENTIALS_BASE64,
-      "base64"
-    ).toString("utf-8");
-
-    const credentials = JSON.parse(decoded);
-
-    const auth = new google.auth.JWT({
-      email: credentials.client_email,
-      key: credentials.private_key,
-      scopes: ["https://www.googleapis.com/auth/spreadsheets"],
-    });
-
-    sheets = google.sheets({ version: "v4", auth });
-
-    console.log("✅ Google Sheets initialized");
-  } else {
-    console.log("⚠️ No Google credentials found");
-  }
-} catch (err) {
-  console.error("❌ Google init error:", err);
-}
-
-// ✅ MAIN FUNCTION (SAFE)
 export async function addToSheet(data: any) {
   try {
-    if (!sheets) {
-      console.log("⚠️ Skipping Google Sheets (not initialized)");
-      return;
-    }
+    const sheets = google.sheets({ version: "v4", auth });
 
     await sheets.spreadsheets.values.append({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
