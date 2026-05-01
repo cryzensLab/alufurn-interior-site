@@ -3,7 +3,9 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { Mail, Bot, ArrowUp, X } from "lucide-react";
-import Chatbot from "./Chatbot";
+import dynamic from "next/dynamic";
+
+const Chatbot = dynamic(() => import("./Chatbot"), { ssr: false });
 
 /* ── Scroll Detection Hook ── */
 function useScrollVisibility(debounceMs = 200) {
@@ -75,6 +77,14 @@ export default function FloatingActions() {
     const { isVisible } = useScrollVisibility();
     const [tooltipId, setTooltipId] = useState<string | null>(null);
     const [isChatOpen, setIsChatOpen] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener("resize", checkMobile);
+        return () => window.removeEventListener("resize", checkMobile);
+    }, []);
 
     const scrollToTop = useCallback(() => {
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -140,7 +150,9 @@ export default function FloatingActions() {
     return (
         <>
             {/* ── Custom Chatbot Component ── */}
-            <Chatbot isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
+            {(!isMobile || isChatOpen) && (
+                <Chatbot isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
+            )}
 
             {/* ── FAB Stack ── */}
             <AnimatePresence>

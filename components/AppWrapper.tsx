@@ -1,10 +1,12 @@
 "use client";
 
-import { useState, createContext, useContext } from "react";
+import { useState, createContext, useContext, useEffect } from "react";
+import dynamic from "next/dynamic";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
-import QuoteModal from "@/components/QuoteModal";
+
+const QuoteModal = dynamic(() => import("@/components/QuoteModal"), { ssr: false });
 
 interface QuoteContextType {
     openQuote: () => void;
@@ -20,9 +22,22 @@ export const useQuote = () => {
 
 export default function AppWrapper({ children }: { children: React.ReactNode }) {
     const [isQuoteOpen, setIsQuoteOpen] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        
+        checkMobile();
+        window.addEventListener("resize", checkMobile);
+        return () => window.removeEventListener("resize", checkMobile);
+    }, []);
 
     const openQuote = () => setIsQuoteOpen(true);
     const closeQuote = () => setIsQuoteOpen(false);
+
+    const shouldRenderQuote = !isMobile || isQuoteOpen;
 
     return (
         <QuoteContext.Provider value={{ openQuote }}>
@@ -33,7 +48,7 @@ export default function AppWrapper({ children }: { children: React.ReactNode }) 
                 </main>
                 <Footer />
                 <FloatingActions />
-                <QuoteModal isOpen={isQuoteOpen} onClose={closeQuote} />
+                {shouldRenderQuote && <QuoteModal isOpen={isQuoteOpen} onClose={closeQuote} />}
             </div>
         </QuoteContext.Provider>
     );
