@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Book Your Luxury Aluminium Interior Consultation | ALUFURN",
-    description: "Contact ALUFURN to schedule a personalized consultation and visit our manufacturing space or experience center.",
+  title: "Contact | ALUFURN",
+  description: "Contact ALUFURN to schedule a personalized consultation and visit our manufacturing space or experience center.",
 };
 
 const jsonLd = {
@@ -43,17 +43,17 @@ const jsonLd = {
 };
 
 export default function ContactLayout({
-    children,
+  children,
 }: {
-    children: React.ReactNode;
+  children: React.ReactNode;
 }) {
-    return (
-        <>
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-            />
-            {children}
-        </>
-    );
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      {children}
+    </>
+  );
 }

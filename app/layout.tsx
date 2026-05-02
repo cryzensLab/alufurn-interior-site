@@ -21,7 +21,7 @@ const playfair = Playfair_Display({
 
 /* ── Metadata ── */
 export const metadata: Metadata = {
-    title: "Premium Aluminium Interiors, Kitchens & Wardrobes | ALUFURN",
+    title: "Home | ALUFURN",
     description:
         "Redefining luxury through architectural precision and timeless design. Custom aluminium kitchens, wardrobes, doors and interiors.",
 };

@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Luxury Aluminium Kitchens, Wardrobes & Doors | ALUFURN",
+    title: "Products | ALUFURN",
     description: "Exquisite luxury aluminium modular kitchens featuring moisture resistance, seamless finishes, and lifetime durability.",
 };
 

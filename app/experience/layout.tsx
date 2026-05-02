@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Premium Aluminium Interiors Experience Center | ALUFURN",
+    title: "Experience Center | ALUFURN",
     description: "Visit our ALUFURN Experience Center in Patna to explore premium aluminium interiors, live product setups, and expert design guidance.",
 };
 
