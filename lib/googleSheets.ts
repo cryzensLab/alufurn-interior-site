@@ -1,13 +1,17 @@
-import { google } from "googleapis";
+const credentials = process.env.GOOGLE_SERVICE_ACCOUNT_B64
+  ? JSON.parse(Buffer.from(process.env.GOOGLE_SERVICE_ACCOUNT_B64, 'base64').toString('utf-8'))
+  : null;
 
-const credentials = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON!);
-
-const auth = new google.auth.GoogleAuth({
-  credentials,
-  scopes: ["https://www.googleapis.com/auth/spreadsheets"],
-});
+const auth = credentials
+  ? new google.auth.GoogleAuth({
+      credentials,
+      scopes: ["https://www.googleapis.com/auth/spreadsheets"],
+    })
+  : null;
 
 export async function addToSheet(data: any) {
+  if (!auth) throw new Error("Google auth not configured");
+  
   const sheets = google.sheets({ version: "v4", auth });
   await sheets.spreadsheets.values.append({
     spreadsheetId: process.env.GOOGLE_SHEET_ID,
