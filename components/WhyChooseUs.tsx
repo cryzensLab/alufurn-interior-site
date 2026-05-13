@@ -68,7 +68,7 @@ export default function WhyChooseUs() {
                     />
                     {/* Deep gradient to make text legible */}
                     <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-[#111111]/40 to-transparent pointer-events-none" />
-                    
+
                     {/* Stats Grid Overlay */}
                     <div className="absolute bottom-0 left-0 w-full p-6 md:p-12">
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 divide-y sm:divide-y-0 sm:divide-x divide-white/10 border-t border-white/10 pt-6 md:pt-8 backdrop-blur-sm bg-[#111111]/20">
@@ -81,7 +81,7 @@ export default function WhyChooseUs() {
                                 <span className="text-brand-gold text-[9px] md:text-[10px] uppercase tracking-widest font-bold">Automated</span>
                             </div>
                             <div className="flex flex-col items-center text-center pt-4 sm:pt-0">
-                                <span className="text-3xl md:text-5xl font-bold text-white mb-2 tracking-tight">E1</span>
+                                <span className="text-3xl md:text-5xl font-bold text-white mb-2 tracking-tight">E0</span>
                                 <span className="text-brand-gold text-[9px] md:text-[10px] uppercase tracking-widest font-bold">Eco-Safe Standards</span>
                             </div>
                         </div>
