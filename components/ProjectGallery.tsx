@@ -61,7 +61,7 @@ const testimonial = {
 const stats = [
     { value: "0.1 mm", label: "Machining Accuracy" },
     { value: "100%", label: "Automated Production" },
-    { value: "E1", label: "Formaldehyde Standard" },
+    { value: "E0", label: "Formaldehyde Standard" },
     { value: "25+", label: "Projects Delivered" },
 ];
 
@@ -204,7 +204,7 @@ export default function ProjectGallery() {
                                 desc: "Operating with advanced European machinery to achieve 0.1mm accuracy across all modular systems."
                             },
                             {
-                                title: "E1 Grade Materials",
+                                title: "E0 Grade Materials",
                                 desc: "We exclusively use internationally certified, eco-safe materials that protect your family's health and environment."
                             },
                             {
