@@ -33,18 +33,18 @@ const LinkedinIcon = ({ size = 18 }: { size?: number }) => (
    Footer Data
    ────────────────────────────────────────────── */
 const serviceLinks = [
-    "Kitchen Design",
-    "Wardrobe Solutions",
-    "Vanity Units",
-    "Interior Doors",
-    "Custom Panels",
+    { label: "Kitchen Design", href: "/aluminium-kitchen" },
+    { label: "Wardrobe Solutions", href: "/product#wardrobe" },
+    { label: "Vanity Units", href: "/product#vanity" },
+    { label: "Interior Doors", href: "/aluminium-doors" },
+    { label: "Custom Panels", href: "/aluminium-panels" },
 ];
 
 const companyLinks = [
-    { label: "About Us", href: "#" },
-    { label: "Our Process", href: "#" },
+    { label: "About Us", href: "/quality" },
+    { label: "Our Process", href: "/quality" },
     { label: "Experience Center", href: "/experience" },
-    { label: "Careers", href: "#" },
+    { label: "Franchise", href: "/franchise" },
 ];
 
 const supportLinks = [
@@ -52,7 +52,7 @@ const supportLinks = [
     { label: "Catalog Download", href: "/catalog" },
     { label: "Privacy Policy", href: "#" },
     { label: "Terms of Service", href: "#" },
-    { label: "FAQ", href: "#" },
+    { label: "FAQ", href: "/aluminium-kitchen#faq" },
 ];
 
 const socialLinks = [
@@ -139,12 +139,12 @@ export default function Footer() {
                         </h4>
                         <ul className="space-y-4">
                             {serviceLinks.map((item) => (
-                                <li key={item}>
+                                <li key={item.label}>
                                     <Link
-                                        href="#"
+                                        href={item.href}
                                         className="text-white/60 hover:text-white text-sm transition-colors font-light"
                                     >
-                                        {item}
+                                        {item.label}
                                     </Link>
                                 </li>
                             ))}

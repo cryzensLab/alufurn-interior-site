@@ -29,11 +29,11 @@ const locations = [
 ];
 
 const products = [
-    { name: "Kitchen Designs", image: "/images/luxury_bespoke.webp", href: "/product#kitchen" },
+    { name: "Aluminium Kitchen", image: "/images/kitchen_01.webp", href: "/aluminium-kitchen" },
+    { name: "Aluminium Doors", image: "/images/pivot-grand.webp", href: "/aluminium-doors" },
+    { name: "Aluminium Panels", image: "/images/wallpanel_01.webp", href: "/aluminium-panels" },
     { name: "Wardrobe Solutions", image: "/images/hinged-classic.webp", href: "/product#wardrobe" },
     { name: "Vanity Units", image: "/images/double-basin.webp", href: "/product#vanity" },
-    { name: "Interior Door", image: "/images/pivot-grand.webp", href: "/product#interior-doors" },
-    { name: "Custom Aluminium Panels", image: "/images/wall-panel.webp", href: "/product#aluminium-panels" },
 ];
 
 const navLinks = [
@@ -56,7 +56,7 @@ export default function Navbar({ onOpenQuote }: { onOpenQuote?: () => void }) {
     const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
     const [showProductsDropdown, setShowProductsDropdown] = useState(false);
     const [showLocationDropdown, setShowLocationDropdown] = useState(false);
-    const [hoveredProduct, setHoveredProduct] = useState("Kitchen Designs");
+    const [hoveredProduct, setHoveredProduct] = useState("Aluminium Kitchen");
 
     const pathname = usePathname();
     const router = useRouter();
@@ -95,7 +95,7 @@ export default function Navbar({ onOpenQuote }: { onOpenQuote?: () => void }) {
     }, [mobileMenuOpen]);
 
     /* ── Derived state ── */
-    const isSecondaryPage = ["/contact", "/catalog", "/experience", "/product", "/projects", "/quality"].includes(
+    const isSecondaryPage = ["/contact", "/catalog", "/experience", "/product", "/projects", "/quality", "/aluminium-kitchen", "/aluminium-doors", "/aluminium-panels"].includes(
         pathname
     );
     const isWhiteNavbar = isScrolled || showProductsDropdown || isSecondaryPage;
@@ -219,7 +219,7 @@ export default function Navbar({ onOpenQuote }: { onOpenQuote?: () => void }) {
                                                         >
                                                             <Image
                                                                 src={
-                                                                    products.find((p) => p.name === hoveredProduct)?.image || "/fallback.jpg"
+                                                                    products.find((p) => p.name === hoveredProduct)?.image || "/images/kitchen_01.webp"
                                                                 }
                                                                 alt={hoveredProduct}
                                                                 fill

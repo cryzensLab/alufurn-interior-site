@@ -21,9 +21,15 @@ const playfair = Playfair_Display({
 
 /* ── Metadata ── */
 export const metadata: Metadata = {
-    title: "Home | ALUFURN",
+    title: {
+        default: "ALUFURN | Premium Aluminium Modular Kitchens, Doors & Panels — India",
+        template: "%s | ALUFURN",
+    },
     description:
-        "Redefining luxury through architectural precision and timeless design. Custom aluminium kitchens, wardrobes, doors and interiors.",
+        "India's leading aluminium interior manufacturer. Custom aluminium modular kitchens, doors, wardrobes & wall panels. Showrooms in Patna, Jaipur & Calicut. Free design consultation.",
+    alternates: {
+        canonical: "https://alufurn.com/",
+    },
 };
 
 const jsonLd = {

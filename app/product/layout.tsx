@@ -1,8 +1,12 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Products | ALUFURN",
-    description: "Exquisite luxury aluminium modular kitchens featuring moisture resistance, seamless finishes, and lifetime durability.",
+    title: "Aluminium Modular Kitchens, Wardrobes, Doors & Panels",
+    description:
+        "Explore ALUFURN's complete range of premium aluminium interiors — modular kitchens, wardrobes, vanity units, pivot doors, and custom wall panels. Manufactured in India.",
+    alternates: {
+        canonical: "https://alufurn.com/product",
+    },
 };
 
 const jsonLd = {
