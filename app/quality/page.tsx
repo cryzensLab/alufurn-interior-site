@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 const stats = [
     { value: "0.1 mm", label: "Machining Accuracy", detail: "CNC precision on every profile and panel" },
     { value: "100%", label: "Automated Production", detail: "Zero manual deviation at any stage" },
-    { value: "E1", label: "Formaldehyde Standard", detail: "European safety compliance across all boards" },
+    { value: "E0", label: "Formaldehyde Standard", detail: "European safety compliance across all boards" },
     { value: "25+", label: "Projects Delivered", detail: "From single residences to developer contracts" },
 ];
 
